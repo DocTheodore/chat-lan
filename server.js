@@ -1,12 +1,11 @@
 const express = require('express');
 const http = require('http');
-const socketIo = require('socket.io');
+const { Server } = require('socket.io');
 const ip = require('ip');
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server);
-const port = 3000;
+const io = new Server(server);
 
 //Pasta que sera enviada na rede
 app.use(express.static('public'));
@@ -35,6 +34,6 @@ io.on('connection', (socket) => {
 
 
 
-app.listen(port, () => {
-  console.log(`Server online in http://${ip.address()}:${port}`);
+app.listen(3000, () => {
+  console.log(`Server online in http://${ip.address()}:3000`);
 });
