@@ -27,7 +27,7 @@ body, div, *{
 #site {
     background-color: #eee;
     min-height: 50rem;
-    padding: .5rem 3rem 0;
+    padding: .5rem 7.5rem 0;
 }
 #input {
     background-color: #093;
@@ -38,11 +38,30 @@ body, div, *{
     width: 86.1%;
     padding: 0 3rem;
 }
+/* ============================================================================== */
+#user {
+    margin-left: 74%;
+    display: flex;
+    align-items: center;
+}
+#name-user {
+    width: 12rem;
+    margin: 0 2rem;
+}
+#color {
+    font-size: 1.5rem;
+    border-left: #eee solid 6px;
+    border-right: #eee solid 6px;
+    background-color: #eee;
+    display: flex;
+    color: #000;
+    cursor: pointer;
+}
 
 /* ============================================================================== */
 .chat {
-    max-width: 80rem;
-    min-width: 10rem;
+    width: 80%;
+    min-width: fit-content;
     padding: .6rem .5rem .75rem;
 
     background-color: #eee;
@@ -54,9 +73,10 @@ body, div, *{
 .chat.chat-self {
     background-color: #093;
     color: #eee;
-    margin-left: 19rem;
+    margin-left: 20%;
+    min-height: 1.4rem;
 }
-.name-user {
+.name-user-chat {
     position: relative;
     bottom: 20px;
     height: 10px;
@@ -67,12 +87,31 @@ body, div, *{
     color: #093;
     font-weight: bolder;
 }
+.chat .chat-text {
+    display: block;
+}
+
+#header h1{
+    min-width: 10rem;
+}
 
 /* ============================================================================== */
 #input-text {
-    width:60rem;
+    width:78rem;
     line-height: 1.75rem;
     border: none;
+    margin-left: 6rem;
+    border-radius: 30px;
+    padding: 0 1rem;
+    text-decoration: none;
+    border-bottom: #9fb solid 2px;
+    outline: 0;
+    transition: .2s;
+}
+#input-text:focus {
+    border: none;
+    transition: .2s;
+    border-bottom: #0f3 solid 2px;
 }
 #send-text{
     background-color: #9fb;
