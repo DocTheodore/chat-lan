@@ -9,14 +9,16 @@
 <body>
     <div class="background">
         <header id="header">
-            <h1>Chat local</h1>
+            <h1>Chat local 💬</h1>
             <div id="user">
                 <span id="color">■</span>
                 <h2 id="name-user">Nome do usuário</h2>
+                <button id="change-user" onclick="changeName()">📝</button>
             </div>
         </header>
+
         <section id="site">
-            <div class="chat-log">
+            <div id="chat-log">
                 <div class="chat">
                     <div class="name-user-chat">Teste</div>
                     <div class="chat-text">Uma mensagem de teste</div>
@@ -27,9 +29,10 @@
 
             </div>
         </section>
+
         <section id="input">
-            <input id="input-text" type="text">
-            <button id="send-text">Enviar</button>
+            <input id="input-text" type="text" onkeydown="sendChat(true)">
+            <button id="send-text" onclick="sendChat(false)">Enviar</button>
         </section>
     </div>
     <script src="/socket.io/socket.io.js"></script>
