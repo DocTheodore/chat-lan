@@ -14,6 +14,7 @@ app.use(express.static('public'));
 //Lista de Usuarios
 let userList = [];
 let chatLog = [];
+let chatId = 0
 
 //Função que confere o ip do usuario ou adiciona um usuario novo
 function addOrUpdateUser(ip, id) {
@@ -33,7 +34,7 @@ io.on('connection', (socket) => {
   addOrUpdateUser(ipAdress, socket.id);
   const currentUser = userList.find(u => u.ip === ipAdress);
 
-  socket.emit('first_entry', currentUser);
+  socket.emit('first_entry', [currentUser, chatLog]);
 
   socket.on('change_name', (data) => {
     currentUser.nome = data[0] === null? currentUser.nome: data[0];
@@ -43,16 +44,18 @@ io.on('connection', (socket) => {
 
   //Envio de mensagem
   socket.on('send', (text) => {
+    chatId++;
     chatLog.push(
       {
         name: currentUser.nome,
         color: currentUser.cor,
         ip: currentUser.ip,
-        text: text
+        text: text[0],
+        chat_id: chatId
       }
     )
     userList.forEach(user => {
-      io.to(user.id).emit('update', chatLog, currentUser.ip);
+      io.to(user.id).emit('update', chatLog);
     })
   })
 
