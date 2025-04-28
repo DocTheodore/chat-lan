@@ -14,26 +14,39 @@ const colorList = [
     'purple',
     'wine'
 ]
-let currentColor = 0;
+let currentColor = '';
 let ipAdress = '';
 let chatLogData = [];
 
-function changeName(){
-    color.id = `color ${(colorList[currentColor])}`;
-    currentColor = Math.floor(Math.random()*9)
+function getColor(rng=false){
+    if (currentColor === '' || currentColor === null || currentColor === undefined || rng === true){
+        currentColor = (colorList[Math.floor(Math.random()*9)]);
+        color.classList.add(currentColor);
+
+        changeName(nome.innerText);
+        window.location.reload();
+    }
+    else{
+        color.classList.add(currentColor);
+    }
+}
+
+function changeName(nome=''){
+    getColor();
     console.log()
 
-    let newName = ''
+    let newName = nome;
     while (newName === '' || newName === null || newName === undefined){
         newName = window.prompt('Digite o seu nome: ');
     }
     console.log(newName);
     nome.textContent = newName;
-    socket.emit('change_name', [newName, colorList[currentColor]]);
+    socket.emit('change_name', [newName, currentColor]);
+    window.location.reload();
 }
 
 function createChatBubble(name, color, text){
-    if(currentColor === null || currentColor === undefined) currentColor = Math.floor(Math.random()*9)
+    getColor();
     const newChat = document.createElement('div');
     newChat.classList.add('chat');
 
@@ -45,7 +58,7 @@ function createChatBubble(name, color, text){
         newChat.appendChild(nameDiv);
     } else {
         newChat.classList.add(`chat-self`);
-        newChat.classList.add(`${colorList[currentColor]}`);        
+        newChat.classList.add(currentColor);        
     }
 
     const textDiv = document.createElement('div');
@@ -70,10 +83,12 @@ function updateChat(chatlist){
     console.log(chatLogData);
     chatlist.forEach((chat) => {
         if(!(chatLogData.includes(chat.chat_id))){
-            if(chat.ip === ipAdress)
+            if(chat.ip === ipAdress){
                 chatlog.appendChild(createChatBubble('', '', chat.text))
-            else 
+            }
+            else{
                 chatlog.appendChild(createChatBubble(chat.name, chat.color, chat.text));
+            }
             chatLogData.push(chat.chat_id);
         }
         //console.log(chat, chatLogData, chatLogData.includes(chat.chat_id));
@@ -84,13 +99,18 @@ socket.on('first_entry', (Data) => {
     const usuario = Data[0];
     const chatData = Data[1];
 
-    if(usuario.nome === '') changeName();
+    if(usuario.nome === '') {
+        getColor();
+        changeName();
+        ipAdress = usuario.ip;
+        updateChat(chatData);
+    }
     else {
         nome.innerText = usuario.nome;
         currentColor = usuario.cor;
         ipAdress = usuario.ip;
+        updateChat(chatData);
     }
-    updateChat(chatData);
 })
 
 socket.on('update', updateChat);

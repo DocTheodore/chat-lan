@@ -203,6 +203,7 @@ body, div, * {
     width: 25px;
     background-color: #eee;
     color: #222;
+    font-weight: bolder;
     text-align: center;
 }
 
@@ -210,7 +211,7 @@ body, div, * {
 .chat.black, .chat:has(> .name-user-chat.black) {
     border-color: #222;
 }
-.chat.chat-self.black, span#color#black {
+.chat.chat-self.black, span#color.black {
     color: #fff;
     background-color: #222;
 }
@@ -219,7 +220,7 @@ body, div, * {
 .chat.red, .chat:has(> .name-user-chat.red) {
     border-color: #e22;
 }
-.chat.chat-self.red, span#color#red {
+.chat.chat-self.red, span#color.red {
     color: #fff;
     background-color: #e22;
 }
@@ -228,7 +229,7 @@ body, div, * {
 .chat.orange, .chat:has(> .name-user-chat.orange) {
     border-color: #f80;
 }
-.chat.chat-self.orange, span#color#orange{
+.chat.chat-self.orange, span#color.orange{
     color: #222;
     background-color: #f80;
 }
@@ -237,7 +238,7 @@ body, div, * {
 .chat.yellow, .chat:has(> .name-user-chat.yellow) {
     border-color: #ee2;
 }
-.chat.chat-self.yellow, span#color#yellow{
+.chat.chat-self.yellow, span#color.yellow{
     color: #222;
     background-color: #ee2;
 }
@@ -246,7 +247,7 @@ body, div, * {
 .chat.green, .chat:has(> .name-user-chat.green) {
     border-color: #0d4;
 }
-.chat.chat-self.green, span#color#green{
+.chat.chat-self.green, span#color.green{
     color: #222;
     background-color: #0d4;
 }
@@ -255,7 +256,7 @@ body, div, * {
 .chat.cyan, .chat:has(> .name-user-chat.cyan) {
     border-color: #1ee;
 }
-.chat.chat-self.cyan, span#color#cyan{
+.chat.chat-self.cyan, span#color.cyan{
     color: #222;
     background-color: #1ee;
 }
@@ -264,7 +265,7 @@ body, div, * {
 .chat.blue, .chat:has(> .name-user-chat.blue) {
     border-color: #11e;
 }
-.chat.chat-self.blue, span#color#blue {
+.chat.chat-self.blue, span#color.blue {
     color: #fff;
     background-color: #11e;
 }
@@ -273,7 +274,7 @@ body, div, * {
 .chat.purple, .chat:has(> .name-user-chat.purple) {
     border-color: #81e;
 }
-.chat.chat-self.purple, span#color#purple {
+.chat.chat-self.purple, span#color.purple {
     color: #fff;
     background-color: #81e;
 }
@@ -282,7 +283,7 @@ body, div, * {
 .chat.wine, .chat:has(> .name-user-chat.wine) {
     border-color: #802;
 }
-.chat.chat-self.wine, span#color#wine {
+.chat.chat-self.wine, span#color.wine {
     color: #fff;
     background-color: #802;
 }
